@@ -5,7 +5,7 @@
         "description": "Laravel project to practice developing Rest API with L5 Swagger OpenApi",
         "contact": {
             "name": "Olivia Kristiani",
-            "email": "olivia.kristiani.422023025@civitas.ukrida.ac.id"
+            "email": "lelesyshy@gmail.com"
         },
         "version": "1.0",
         "x-logo": {
@@ -30,9 +30,9 @@
                             },
                             "example": {
                                 "name": "Olivia",
-                                "email": "olivia.kristiani.422023025@civitas.ukrida.ac.id",
-                                "password": "liv321",
-                                "password_confirmation": "liv321"
+                                "email": "lelesyshy@gmail.com",
+                                "password": "lele123",
+                                "password_confirmation": "lele123"
                             }
                         }
                     }
@@ -73,8 +73,8 @@
                                 "$ref": "#/components/schemas/User"
                             },
                             "example": {
-                                "email": "olivia.kristiani.422023025@civitas.ukrida.ac.id",
-                                "password": "liv321"
+                                "email": "lelesyshy@gmail.com",
+                                "password": "lele123"
                             }
                         }
                     }
