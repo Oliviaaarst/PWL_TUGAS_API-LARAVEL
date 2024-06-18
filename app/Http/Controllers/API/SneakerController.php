@@ -6,20 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use App\Models\Book;
+use App\Models\Sneaker;
 use OpenApi\Annotations as OA;
 
 /**
- * Class BookController.
+ * Class SneakerController.
  * 
  * @author Olivia <olivia.422023025@civitas.ukrida.ac.id>
  */
-class BookController extends Controller
+class SneakerController extends Controller
 {
     /** 
      * @OA\Get(
-     *     path="/api/book",
-     *     tags={"book"},
+     *     path="/api/sneaker",
+     *     tags={"sneaker"},
      *     summary="Display a listing of the items",
      *     operationId="index",
      *     @OA\Response(
@@ -74,7 +74,7 @@ class BookController extends Controller
      *      required=false,
      *      @OA\Schema(
      *          type="integer",
-     *          example="latest"
+     *          example="1"
      *      )
      *  ),
      * )
@@ -86,10 +86,10 @@ class BookController extends Controller
             $page                 = $data['filter']['_page']  = (@$data['filter']['_page'] ? intval($data['filter']['_page']) : 1);
             $limit                = $data['filter']['_limit'] = (@$data['filter']['_limit'] ? intval($data['filter']['_limit']) : 1000);
             $offset               = ($page?($page-1)*$limit:0);
-            $data['products']     = Book::whereRaw('1 = 1');
+            $data['products']     = Sneaker::whereRaw('1 = 1');
             
             if($request->get('_search')){
-                $data['products'] = $data['products']->whereRaw('(LOWER(title) LIKE "%'.strtolower($request->get('_search')).'%")');
+                $data['products'] = $data['products']->whereRaw('(LOWER(name) LIKE "%'.strtolower($request->get('_search')).'%")');
             }
             if($request->get('_type')){
                 $data['products'] = $data['products']->whereRaw('LOWER(type) = "'.strtolower($request->get('_type')).'"');
@@ -131,8 +131,8 @@ class BookController extends Controller
     }
     /**
      * @OA\Post(
-     *      path="/api/book",
-     *      tags={"book"},
+     *      path="/api/sneaker",
+     *      tags={"sneaker"},
      *      summary="Store a newly created item",
      *      operationId="store",
      *      @OA\Response(
@@ -149,11 +149,11 @@ class BookController extends Controller
      *           required=true,
      *           description="Request body description",
      *           @OA\JsonContent(
-     *               ref="#/components/schemas/Book",
-     *               example={"title": "Eating Clean", "author": "Inge Tumiwa-Bachrens", "publisher": "Kawan Pustaka", "publication_year": "2016",
-     *                        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1482170055i/33511107.jpg",
-     *                        "description": "Menjadi sehat adalah impian semua orang. Makanan yang selama ini kita pikir sehat ternyata belum tentu 'sehat' bagi tubuh kita.",
-     *                        "price": 85000}
+     *               ref="#/components/schemas/Sneaker",
+     *               example={"name": "adidas Superstar Rich Mnisi", "shoe_designer": "Chris Severn", "publisher": "adidas", "publication_year": "1969",
+     *                        "cover": "https://res.cloudinary.com/overkillshop/image/upload/v1688137093/products/adidas/Sneaker/ID7493/ID7493_1.jpg",
+     *                        "description": "Sepatu kets adidas x RICH MNISI Superstar OT menampilkan desain berani yang sebagian dibuat dengan bahan daur ulang. Pasangan ini dihiasi dengan motif binatang dan bentuk abstrak dari imajinasi artistik desainer Afrika Selatan, sementara penutup kaki berbahan karet tetap sesuai dengan desain OG.",
+     *                        "price": 1020000}
      *            ),
      *          ),
      *          security={{"passport_token_ready":{},"passport":{}}}
@@ -163,15 +163,15 @@ class BookController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'title' => 'required|unique:books',
+                'title' => 'required|unique:sneakers',
                 'author' => 'required|max:100',
             ]);
             if ($validator->fails()) {
                 throw new HttpException(400, $validator->message()->first());
             }
-            $book = new Book;
-            $book->fill($request->all())->save();
-            return $book;
+            $sneaker = new Sneaker;
+            $sneaker->fill($request->all())->save();
+            return $sneaker;
 
         } catch(\Exception $exception) {
             throw new HttpException(400, "Invalid data : {$exception->getMessage()}");
@@ -180,8 +180,8 @@ class BookController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/book/{id}",
-     *     tags={"book"},
+     *     path="/api/sneaker/{id}",
+     *     tags={"sneaker"},
      *     summary="Display the specified item",
      *     operationId="show",
      *     @OA\Response(
@@ -213,17 +213,17 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book = Book::find($id);
-        if(!$book){
+        $sneaker = Sneaker::find($id);
+        if(!$sneaker){
             throw new HttpException(404, 'Item not found');
         }
-        return $book;
+        return $sneaker;
     }
 
     /**
      * @OA\Put(
-     *     path="/api/book/{id}",
-     *     tags={"book"},
+     *     path="/api/sneaker/{id}",
+     *     tags={"sneaker"},
      *     summary="Update the specified item",
      *     operationId="update",
      *     @OA\Response(
@@ -255,11 +255,11 @@ class BookController extends Controller
      *           required=true,
      *           description="Request body description",
      *           @OA\JsonContent(
-     *               ref="#/components/schemas/Book",
-     *               example={"title": "Eating Clean", "author": "Inge Tumiwa-Bachrens", "publisher": "Kawan Pustaka", "publication_year": "2016",
-     *                        "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1482170055i/33511107.jpg",
-     *                        "description": "Menjadi sehat adalah impian semua orang. Makanan yang selama ini kita pikir sehat ternyata belum tentu 'sehat' bagi tubuh kita.",
-     *                        "price": 85000}
+     *               ref="#/components/schemas/Sneaker",
+     *               example={"name": "adidas Superstar Rich Mnisi", "shoe_designer": "Chris Severn", "publisher": "adidas", "publication_year": "1969",
+     *                        "cover": "https://res.cloudinary.com/overkillshop/image/upload/v1688137093/products/adidas/Sneaker/ID7493/ID7493_1.jpg",
+     *                        "description": "Sepatu kets adidas x RICH MNISI Superstar OT menampilkan desain berani yang sebagian dibuat dengan bahan daur ulang. Pasangan ini dihiasi dengan motif binatang dan bentuk abstrak dari imajinasi artistik desainer Afrika Selatan, sementara penutup kaki berbahan karet tetap sesuai dengan desain OG.",
+     *                        "price": 1020000}
      *           ),
      *        ),
      *        security={{"passport_token_ready":{},"passport":{}}}
@@ -267,20 +267,20 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $book = Book::find($id);
-        if(!$book){
+        $sneaker = Sneaker::find($id);
+        if(!$sneaker){
             throw new HttpException(404, 'Item not found');
         }
 
         try {
             $validator = Validator::make($request->all(), [
-                'title'  => 'required|unique:books',
+                'title'  => 'required|unique:sneakers',
                 'author'  => 'required|max:100',
             ]);
             if ($validator->fails()) {
                 throw new HttpException(400, $validator->messages()->first());
             }
-            $book->fill($request->all())->save();
+            $sneaker->fill($request->all())->save();
             return response()->json(array('message'=>'Updated successfully'), 200);
 
         } catch(\Exception $exception) {
@@ -290,8 +290,8 @@ class BookController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/book/{id}",
-     *     tags={"book"},
+     *     path="/api/sneaker/{id}",
+     *     tags={"sneaker"},
      *     summary="Remove the specified item",
      *     operationId="destroy",
      *     @OA\Response(
@@ -324,13 +324,13 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $book = Book::find($id);
-        if(!$book){
+        $sneaker = Sneaker::find($id);
+        if(!$sneaker){
             throw new HttpException(404, 'Item not found');
         }
 
         try {
-            $book->delete();
+            $sneaker->delete();
             return response()->json(array('message'=>'Deleted successfully'), 200);
 
         } catch(\Exception $exception) {

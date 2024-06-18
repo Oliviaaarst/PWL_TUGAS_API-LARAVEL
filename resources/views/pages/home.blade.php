@@ -23,12 +23,11 @@
                             <h2>W.T.T.W.&nbsp;&nbsp;Store</h2>
                             <p>
                                 <small>
-                                Whether you're searching for the latest bestsellers, timeless classics,
-                                or hidden gems, our carefully curated collection has something for everyone.
-                                Our passionate staff is dedicated to helping you find the perfect read, 
-                                and our cozy, welcoming environment invites you to linger
-                                and explore. Join our community of book lovers and let us help you.
-                                Visit us today and experience the joy of getting lost in a great book &#10084;
+                                Welcome to our shoe shop, the best destination for all your shoe needs. 
+                                We offer various collections of high quality shoes, ranging from casual, formal, sports, to the latest fashion. 
+                                Our passionate staff is dedicated to helping you find the perfect shoe,
+                                and our comfortable, welcoming environment invites you to linger and explore. 
+                                Join our community of shoe lovers and let us help you. Visit us today and experience the joy of getting lost in a great shoe &#10084;
                                 </small>
                             </p>
                             <p class="mt-5">Find your window to the world! Or, even, 

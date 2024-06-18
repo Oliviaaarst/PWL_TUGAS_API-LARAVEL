@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\BookController;
+use App\Http\Controllers\API\SneakerController;
 
 Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-Route::get('/book', function () {
+Route::get('/sneaker', function () {
     return view('pages.plp');
 })->name('plp');
 
-Route::get('/book/{i}', function () {
+Route::get('/sneaker/{i}', function () {
     return view('pages.pdp');
 })->name('pdp');

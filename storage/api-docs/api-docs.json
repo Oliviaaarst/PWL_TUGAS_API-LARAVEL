@@ -143,10 +143,10 @@
                 ]
             }
         },
-        "/api/book": {
+        "/api/sneaker": {
             "get": {
                 "tags": [
-                    "book"
+                    "sneaker"
                 ],
                 "summary": "Display a listing of the items",
                 "operationId": "index",
@@ -198,7 +198,7 @@
                         "required": false,
                         "schema": {
                             "type": "integer",
-                            "example": "latest"
+                            "example": "1"
                         }
                     }
                 ],
@@ -215,7 +215,7 @@
             },
             "post": {
                 "tags": [
-                    "book"
+                    "sneaker"
                 ],
                 "summary": "Store a newly created item",
                 "operationId": "store",
@@ -225,16 +225,16 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/Book"
+                                "$ref": "#/components/schemas/Sneaker"
                             },
                             "example": {
-                                "title": "Eating Clean",
-                                "author": "Inge Tumiwa-Bachrens",
-                                "publisher": "Kawan Pustaka",
-                                "publication_year": "2016",
-                                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1482170055i/33511107.jpg",
-                                "description": "Menjadi sehat adalah impian semua orang. Makanan yang selama ini kita pikir sehat ternyata belum tentu 'sehat' bagi tubuh kita.",
-                                "price": 85000
+                                "name": "adidas Superstar Rich Mnisi",
+                                "shoe_designer": "Chris Severn",
+                                "publisher": "adidas",
+                                "publication_year": "1969",
+                                "cover": "https://res.cloudinary.com/overkillshop/image/upload/v1688137093/products/adidas/Sneaker/ID7493/ID7493_1.jpg",
+                                "description": "Sepatu kets adidas x RICH MNISI Superstar OT menampilkan desain berani yang sebagian dibuat dengan bahan daur ulang. Pasangan ini dihiasi dengan motif binatang dan bentuk abstrak dari imajinasi artistik desainer Afrika Selatan, sementara penutup kaki berbahan karet tetap sesuai dengan desain OG.",
+                                "price": 1020000
                             }
                         }
                     }
@@ -265,10 +265,10 @@
                 ]
             }
         },
-        "/api/book/{id}": {
+        "/api/sneaker/{id}": {
             "get": {
                 "tags": [
-                    "book"
+                    "sneaker"
                 ],
                 "summary": "Display the specified item",
                 "operationId": "show",
@@ -313,7 +313,7 @@
             },
             "put": {
                 "tags": [
-                    "book"
+                    "sneaker"
                 ],
                 "summary": "Update the specified item",
                 "operationId": "update",
@@ -335,16 +335,16 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/Book"
+                                "$ref": "#/components/schemas/Sneaker"
                             },
                             "example": {
-                                "title": "Eating Clean",
-                                "author": "Inge Tumiwa-Bachrens",
-                                "publisher": "Kawan Pustaka",
-                                "publication_year": "2016",
-                                "cover": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1482170055i/33511107.jpg",
-                                "description": "Menjadi sehat adalah impian semua orang. Makanan yang selama ini kita pikir sehat ternyata belum tentu 'sehat' bagi tubuh kita.",
-                                "price": 85000
+                                "name": "adidas Superstar Rich Mnisi",
+                                "shoe_designer": "Chris Severn",
+                                "publisher": "adidas",
+                                "publication_year": "1969",
+                                "cover": "https://res.cloudinary.com/overkillshop/image/upload/v1688137093/products/adidas/Sneaker/ID7493/ID7493_1.jpg",
+                                "description": "Sepatu kets adidas x RICH MNISI Superstar OT menampilkan desain berani yang sebagian dibuat dengan bahan daur ulang. Pasangan ini dihiasi dengan motif binatang dan bentuk abstrak dari imajinasi artistik desainer Afrika Selatan, sementara penutup kaki berbahan karet tetap sesuai dengan desain OG.",
+                                "price": 1020000
                             }
                         }
                     }
@@ -384,7 +384,7 @@
             },
             "delete": {
                 "tags": [
-                    "book"
+                    "sneaker"
                 ],
                 "summary": "Remove the specified item",
                 "operationId": "destroy",
@@ -437,15 +437,15 @@
     },
     "components": {
         "schemas": {
-            "Book": {
-                "title": "Book model",
-                "description": "Book model",
+            "Sneaker": {
+                "title": "Sneaker model",
+                "description": "Sneaker model",
                 "required": [
                     "title",
                     "author"
                 ],
                 "xml": {
-                    "name": "Book"
+                    "name": "Sneaker"
                 }
             },
             "User": {

@@ -3,7 +3,7 @@ console.log('__app js');
 const baseUrl = window.location.origin;
 const apiHeaders = {
     headers: {
-        "Accept": "*/*",
+        "Accept": "/",
         "Access-Control-Allow-Origin": "*",
         // "Content-Type": "application/json",
         "Content-Type": "multipart/form-data",

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{csrf_token() }}">
         <meta name="description" content="Find your window to the world!">
-        <meta name="keywords" content="ecommerce, book">
+        <meta name="keywords" content="ecommerce, sneaker">
         <meta name="author" content="422023025 - Olivia">
 
         <title>@yield('title') | 422023025 - Olivia</title>
