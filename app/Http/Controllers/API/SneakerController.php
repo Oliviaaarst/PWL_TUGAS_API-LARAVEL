@@ -91,8 +91,8 @@ class SneakerController extends Controller
             if($request->get('_search')){
                 $data['products'] = $data['products']->whereRaw('(LOWER(name) LIKE "%'.strtolower($request->get('_search')).'%")');
             }
-            if($request->get('_type')){
-                $data['products'] = $data['products']->whereRaw('LOWER(type) = "'.strtolower($request->get('_type')).'"');
+            if($request->get('_shoe_designer')){
+                $data['products'] = $data['products']->whereRaw('LOWER(shoe_designer) = "'.strtolower($request->get('_shoe_designer')).'"');
             }
             if($request->get('_sort_by')){
             switch ($request->get('_sort_by')) {

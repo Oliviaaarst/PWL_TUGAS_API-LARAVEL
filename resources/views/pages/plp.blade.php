@@ -10,13 +10,15 @@
                 <div class="col-lg-3 col-md-3 order-md-1 order-2  small-mt__40">
                     <div class="shop-widget widget-shop-publishers mt-3">
                         <div class="product-filter">
-                            <h6 class="mb-20">Type</h6>
-                            <select class="_filter form-select form-select-sm" name="_publisher" onchange="getData()">
-                                <option value="" selected>published</option>
-                                <option value="putnam">Nike</option>
-                                <option value="harriman house">Adidas</option>
-                                <option value="balai pustaka">New Balance</option>
-                                <option value="Lentera dipantara">Converse</option>
+                            <h6 class="mb-20">shoe_designer</h6>
+                            <select class="_filter form-select form-select-sm" name="_shoe_designer" onchange="getData()">
+                                <option value="" selected>All</option>
+                                <option value="Chealsea Olivia">Chealsea Olivia</option>
+                                <option value="William J.Riley">William J.Riley</option>
+                                <option value="Nike">Nike</option>
+                                <option value="Peter Moore">Peter Moore</option>
+                                <option value="Chris Severn">Chris Severn</option>
+                                <option value="Marquis Mills Converse">Marquis Mills Converse</option>
                                 
                             </select>
                         </div>
